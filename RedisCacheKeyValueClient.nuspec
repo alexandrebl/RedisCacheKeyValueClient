@@ -1,0 +1,32 @@
+﻿<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>RedisCacheKeyValueClient</id>
+    <version>1.0.1</version>
+    <title>RedisCacheKeyValueClient</title>
+    <authors>Alexandre Brandao Lustosa</authors>
+    <owners>Alexandre Brandao Lustosa</owners>
+    <licenseUrl>https://github.com/alexandrebl/RedisCacheKeyValueClient</licenseUrl>
+    <projectUrl>https://github.com/alexandrebl/RedisCacheKeyValueClient</projectUrl>
+    <iconUrl>https://github.com/alexandrebl/RedisCacheKeyValueClient</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Redis Cache Key Value Client</description>
+    <releaseNotes>Redis Cache Key Value Client Library</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>Redis Cache Client Key Value</tags>
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="9.0" />
+      <dependency id="StackExchange.Redis" version="1.2.1" />
+      <dependency id="StackExchange.Redis.Extender" version="1.0.5" />
+      <dependency id="StackExchange.Redis.Extensions.Core" version="2.1.0" />
+      <dependency id="StackExchange.Redis.Extensions.Newtonsoft" version="2.1.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\net45\*" target="lib\net45"></file>
+    <file src="bin\Release\net452\*" target="lib\net452"></file>
+    <file src="bin\Release\net46\*" target="lib\net46"></file>
+    <file src="bin\Release\net461\*" target="lib\net461"></file>
+    <file src="bin\Release\net462\*" target="lib\net462"></file>
+  </files>
+</package>
