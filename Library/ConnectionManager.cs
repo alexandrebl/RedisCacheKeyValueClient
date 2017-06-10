@@ -8,7 +8,7 @@ namespace RedisCacheKeyValueClient.Library {
     /// <summary>
     /// Cache connection manager
     /// </summary>
-    internal static class ObserverConnectionManager {
+    internal static class ConnectionManager {
 
         /// <summary>
         /// connection String
@@ -45,6 +45,15 @@ namespace RedisCacheKeyValueClient.Library {
         /// Event Info
         /// </summary>
         public static event Action<string> OnInfo;
+
+        /// <summary>
+        /// Define connection string
+        /// </summary>
+        /// <param name="connectionString">connection string</param>
+        public static void SetConnectionString(string connectionString) {
+            //Define connection
+            _connectionString = connectionString;
+        }
 
         /// <summary>
         /// Open connection
@@ -104,15 +113,6 @@ namespace RedisCacheKeyValueClient.Library {
             OnInfoHandle("Retry connection");
             //Open connection
             return OpenConnection(true);
-        }
-
-        /// <summary>
-        /// Define connection string
-        /// </summary>
-        /// <param name="connectionString">connection string</param>
-        public static void SetConnectionString(string connectionString) {
-            //Define connection
-            _connectionString = connectionString;
         }
 
         /// <summary>

@@ -1,0 +1,10 @@
+﻿<ProjectConfiguration>
+  <Settings>
+    <AllowCodeAnalysis>True</AllowCodeAnalysis>
+    <AllowStaticCodeContractChecking>True</AllowStaticCodeContractChecking>
+    <BuildProcessArchitecture>x64</BuildProcessArchitecture>
+    <IgnoredTests>
+      <AllTestsSelector />
+    </IgnoredTests>
+  </Settings>
+</ProjectConfiguration>

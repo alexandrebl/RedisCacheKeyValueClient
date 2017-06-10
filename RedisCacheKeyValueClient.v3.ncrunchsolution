@@ -1,0 +1,9 @@
+﻿<SolutionConfiguration>
+  <Settings>
+    <AllowParallelTestExecution>True</AllowParallelTestExecution>
+    <NCrunchCacheStoragePath>AddFiles/Cache</NCrunchCacheStoragePath>
+    <ProjectConfigStoragePathRelativeToSolutionDir>AddFiles/Config</ProjectConfigStoragePathRelativeToSolutionDir>
+    <ShowCoverageForTests>True</ShowCoverageForTests>
+    <SolutionConfigured>True</SolutionConfigured>
+  </Settings>
+</SolutionConfiguration>
