@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net45;net452;net46;net461;net462;</TargetFrameworks>
+    <TargetFrameworks>net46;net461;net462;</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,10 +10,6 @@
     <PackageReference Include="StackExchange.Redis.Extender" Version="1.0.5" />
     <PackageReference Include="StackExchange.Redis.Extensions.Core" Version="2.1.0" />
     <PackageReference Include="StackExchange.Redis.Extensions.Newtonsoft" Version="2.1.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Utilities\Interfaces\" />
   </ItemGroup>
 
 </Project>
