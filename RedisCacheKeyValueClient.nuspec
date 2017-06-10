@@ -23,8 +23,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\net45\*" target="lib\net45"></file>
-    <file src="bin\Release\net452\*" target="lib\net452"></file>
     <file src="bin\Release\net46\*" target="lib\net46"></file>
     <file src="bin\Release\net461\*" target="lib\net461"></file>
     <file src="bin\Release\net462\*" target="lib\net462"></file>
