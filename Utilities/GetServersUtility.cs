@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace RedisCacheKeyValueClient.Utilities
 {
+    /// <summary>
+    /// Get all server based in all connection endpoints.
+    /// </summary>
+    /// <param name="connection"></param>
+    /// <returns>List containing founded servers</returns>
     internal static class GetServersUtility{
         public static List<IServer> GetServers(ConnectionMultiplexer connection) {
 

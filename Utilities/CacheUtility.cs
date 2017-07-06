@@ -12,17 +12,12 @@ namespace RedisCacheKeyValueClient.Utilities {
     /// Utility event manager
     /// </summary>
     /// <typeparam name="T">type</typeparam>
-    internal class CacheUtility<T> : ICacheUtility<T> {
+    public class CacheUtility<T> : ICacheUtility<T> {
 
         /// <summary>
         /// Connection
         /// </summary>
         private readonly ConnectionMultiplexer _connection;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private readonly StackExchangeRedisCacheClient _client;
 
         /// <summary>
         /// Define database to manage data
