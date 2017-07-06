@@ -12,7 +12,7 @@ namespace RedisCacheKeyValueClient.Utilities {
     /// Utility event manager
     /// </summary>
     /// <typeparam name="T">type</typeparam>
-    public class CacheUtility<T> : ICacheUtility<T> {
+    internal class CacheUtility<T> : ICacheUtility<T> {
 
         /// <summary>
         /// Connection
