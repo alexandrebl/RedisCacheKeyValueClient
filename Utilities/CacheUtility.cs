@@ -3,6 +3,8 @@ using RedisCacheKeyValueClient.Utilities.Interfaces;
 using StackExchange.Redis;
 using StackExchange.Redis.Extender;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace RedisCacheKeyValueClient.Utilities {
 
@@ -16,6 +18,11 @@ namespace RedisCacheKeyValueClient.Utilities {
         /// Connection
         /// </summary>
         private readonly ConnectionMultiplexer _connection;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private readonly StackExchangeRedisCacheClient _client;
 
         /// <summary>
         /// Define database to manage data
@@ -79,7 +86,7 @@ namespace RedisCacheKeyValueClient.Utilities {
             //Error event
             ConnectionManager.OnError += delegate (Exception exception) {
                 //Invoke event
-                OnErrorMessageHadle(new Exception($"Connection error. Exception: {exception}"));
+                OnErrorMessageHandle(new Exception($"Connection error. Exception: {exception}"));
             };
 
             //Set database
@@ -106,7 +113,7 @@ namespace RedisCacheKeyValueClient.Utilities {
         /// </summary>
         /// <param name="obj">object</param>
         /// <param name="database">database index</param>
-        protected virtual void OnReceiveMessageHadle(T obj, int database) {
+        protected virtual void OnReceiveMessageHandle(T obj, int database) {
             //Invoke event
             OnReceiveMessage?.Invoke(obj, database);
         }
@@ -124,7 +131,7 @@ namespace RedisCacheKeyValueClient.Utilities {
         /// Emensagem de erro
         /// </summary>
         /// <param name="ex">erro</param>
-        protected virtual void OnErrorMessageHadle(Exception ex) {
+        protected virtual void OnErrorMessageHandle(Exception ex) {
             //Invoke event
             OnErrorMessage?.Invoke(ex);
         }
@@ -158,7 +165,7 @@ namespace RedisCacheKeyValueClient.Utilities {
             //Flag
             if (!IsConnected()) {
                 //Invoke event
-                OnErrorMessageHadle(new Exception("Connection is not ready to set key"));
+                OnErrorMessageHandle(new Exception("Connection is not ready to set key"));
                 return false;
             }
 
@@ -181,7 +188,7 @@ namespace RedisCacheKeyValueClient.Utilities {
             //Flag
             if (!IsConnected()) {
                 //Invoke event
-                OnErrorMessageHadle(new Exception("Connection is not ready to get value"));
+                OnErrorMessageHandle(new Exception("Connection is not ready to get value"));
                 return default(T);
             }
 
@@ -189,7 +196,7 @@ namespace RedisCacheKeyValueClient.Utilities {
             var obj = _connection.GetDatabase(_database).Get<T>(key);
 
             //Receive event
-            OnReceiveMessageHadle(obj, _database);
+            OnReceiveMessageHandle(obj, _database);
 
             //Return
             return obj;
@@ -204,7 +211,7 @@ namespace RedisCacheKeyValueClient.Utilities {
             //Flag
             if (!IsConnected()) {
                 //Invoke event
-                OnErrorMessageHadle(new Exception("Connection is not ready to set database"));
+                OnErrorMessageHandle(new Exception("Connection is not ready to set database"));
                 //Return
                 return false;
             }
@@ -217,6 +224,43 @@ namespace RedisCacheKeyValueClient.Utilities {
 
             //Return
             return true;
+        }
+
+        /// <summary>
+        /// Search for key in databases using pattern.
+        /// </summary>
+        /// <param name="patterns"></param>
+        /// <returns>List containing founded keys</returns>
+        public List<RedisKey> SearchKeys(params string[] patterns) {
+
+            if (!IsConnected()) {
+                OnErrorMessageHandle(new Exception("Connection is not ready to search keys"));
+            }
+
+            // Get all servers in connection.
+            var servers = GetServersUtility.GetServers(_connection);
+
+            if (!servers.Any()) {
+                OnErrorMessageHandle(new Exception("Could not locate any server in connection"));
+            }
+
+            var keysList = new List<RedisKey>();
+
+            // Foreach server in the list of founded servers, it will search for a key in database based in param patterns.
+            foreach (var server in servers) {
+                foreach (var pattern in patterns) {
+                    var keys = server.Keys(_database, pattern);
+
+                    // Add founded keys if it does not already exist in the list.
+                    foreach (var key in keys) {
+                        if (!keysList.Contains(key)) {
+                            keysList.Add(key);
+                        }
+                    }
+                }
+            }
+
+            return keysList;
         }
     }
 }
