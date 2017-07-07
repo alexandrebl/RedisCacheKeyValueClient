@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>RedisCacheKeyValueClient</id>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <title>RedisCacheKeyValueClient</title>
     <authors>Alexandre Brandao Lustosa</authors>
     <owners>Alexandre Brandao Lustosa</owners>
