@@ -11,7 +11,7 @@ Hot to use:
 
 Package console: Install-Package RedisCacheKeyValueClient
 
-´´´cs
+```cs
 using System;
 using RedisCacheKeyValueClient.Manager;
 using RedisCacheKeyValueClient.Manager.Interfaces;
@@ -41,4 +41,4 @@ namespace RedisCacheTest {
         }
     }
 }
-´´´
+```
