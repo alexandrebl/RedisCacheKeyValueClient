@@ -14,7 +14,6 @@ Package console: Install-Package RedisCacheKeyValueClient
 ```cs
 using System;
 using RedisCacheKeyValueClient.Manager;
-using RedisCacheKeyValueClient.Manager.Interfaces;
 
 namespace RedisCacheTest {
     class Program {
@@ -23,7 +22,7 @@ namespace RedisCacheTest {
         /// Main method
         /// </summary>
         static void Main() {
-            //Initialize connection
+            //Initializing connection
             var redisCacheManager = new RedisManager<string>("127.0.0.1:6379");
 
             //Set first value
@@ -33,10 +32,10 @@ namespace RedisCacheTest {
 
             //Get first value
             Console.WriteLine($"Value1: {redisCacheManager.GetValue("Guitar")}");
-            //Get first value
+            //Get second value
             Console.WriteLine($"Value2: {redisCacheManager.GetValue("Pedal")}");
 
-            //Waitng for key press
+            //Waitng for key pressed
             Console.ReadLine();
         }
     }
