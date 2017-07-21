@@ -7,7 +7,7 @@ Redis cache key value client manager
 <strong>Master branch</strong><br />
 <img src="https://ci.appveyor.com/api/projects/status/github/alexandrebl/RedisCacheKeyValueClient?branch=master&svg=true" alt="Project Badge" with="300">
 
-Hot to use:
+How to use:
 
 Package console: Install-Package RedisCacheKeyValueClient
 
